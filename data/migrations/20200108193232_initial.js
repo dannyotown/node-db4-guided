@@ -15,7 +15,9 @@ exports.up = async function(knex) {
       .integer("species_id")
       .notNullable()
       .references("id")
-      .inTable("species");
+      .inTable("species")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     //foreign key??
   });
 
@@ -24,12 +26,16 @@ exports.up = async function(knex) {
       .integer("zoo_id")
       .notNullable()
       .references("id")
-      .inTable("zoos");
+      .inTable("zoos")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     table
       .integer("animal_id")
       .notNullable()
       .references("id")
-      .inTable("animals");
+      .inTable("animals")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
     table.date("from");
     table.date("to");
     table.primary(["zoo_id", "animal_id"]);
